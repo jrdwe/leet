@@ -29,7 +29,7 @@ void printArray(int* nums, int numsSize)
 }
 
 /**
- * Note: The returned array must be malloced, assume caller calls free().
+ * Note: The returned array must be malloc'd, assume caller calls free().
  * We assume that the array nums is sorted in non-decreasing order
  */
 int* sortedSquares(int* nums, int numsSize, int* returnSize)
