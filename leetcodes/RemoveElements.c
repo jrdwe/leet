@@ -5,8 +5,7 @@
 struct ListNode 
 {
   int val;
-  struct ListNode *next;
-};
+  struct ListNode *next; };
 
 /** @brief Given the head of a singly linked-list
  *         and a value, n. Remove all nodes with n.

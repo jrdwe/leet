@@ -2,32 +2,6 @@
 #include <stdlib.h>
 #include <math.h>
 
-int* sortedSquares(int* nums, int numsSize, int* returnSize);
-void printArray(int* nums, int numsSize);
-
-int main()
-{
-	int nums[] = { -4, -1, 0, 3, 10 };
-	size_t n = sizeof(nums)/sizeof(nums[0]);
-
-	int len;
-	int* arr = sortedSquares(nums, n, &len);
-
-	printArray(arr, len);
-
-	return 0;
-}
-
-void printArray(int* nums, int numsSize)
-{
-	printf("[ ");
-	for (int i = 0; i < numsSize; ++i)
-	{
-		printf("%d ", nums[i]);
-	}
-	printf("] \n");
-}
-
 /**
  * Note: The returned array must be malloc'd, assume caller calls free().
  * We assume that the array nums is sorted in non-decreasing order

@@ -2,23 +2,6 @@
 #include <string.h>
 #include <stdlib.h>
 
-void duplicateZeros(int* nums, int numsSize);
-
-int main()
-{
-	int nums[] = { 12, 0, 2, 6, 7696 };
-	size_t n = sizeof(nums)/sizeof(nums[0]);
-
-	duplicateZeros(nums, n);
-
-	/*
-	for (int i = 0; i < n; ++i)
-		printf("%d\n", nums[i]);	
-	*/
-
-	return 0;
-}
-
 /* duplicateZeros: given a fixed-len array, duplicate each occurrence of zero */
 void duplicateZeros(int* nums, int numsSize)
 {
