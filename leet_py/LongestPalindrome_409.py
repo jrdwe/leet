@@ -17,4 +17,4 @@ class Solution:
             if kp[key] // 2 > 0:
                 dups += kp[key] // 2
 
-        return (dups * 2) if len(s) <= (dups * 2) else (dups * 2) + 1
+        return (dups * 2) if len(s) == (dups * 2) else (dups * 2) + 1
