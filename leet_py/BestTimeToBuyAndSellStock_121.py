@@ -13,4 +13,15 @@ class Solution:
 
         return gmax if gmax > 0 else 0
 
+    def maxProfit(self, prices: List[int]) -> int:
+
+        profit, lowest = 0, inf
+        for price in prices:
+            if lowest > price:
+                lowest = price
+            
+            if price - lowest > profit:
+                profit = price - lowest
+
+        return profit
 
