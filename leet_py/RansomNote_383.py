@@ -5,19 +5,10 @@
 class Solution:
     def canConstruct(self, ransomNote: str, magazine: str) -> bool:
 
-        kp = {}
-        for ch in magazine:
-            if ch not in kp:
-                kp[ch] = 1
-            else:
-                kp[ch] += 1
-
+        pool = Counter(magazine)
         for ch in ransomNote:
-            if ch not in kp:
+            if ch not in pool or pool[ch] <= 0:
                 return False
-            else:
-                if kp[ch] == 0:
-                    return False
-                kp[ch] -= 1
+            pool[ch] -= 1
 
         return True
