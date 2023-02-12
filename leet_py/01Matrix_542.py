@@ -4,30 +4,25 @@
 
 class Solution:
     def updateMatrix(self, mat: List[List[int]]) -> List[List[int]]:
+        
+        def bfs(x, y, s, q):
+            while q:
+                i, j, d = q.popleft()
+                for x, y in [(i, j + 1), (i + 1, j), (i, j - 1), (i - 1, j)]:
+                    if x < 0 or y < 0 or x >= len(mat) or y >= len(mat[0]) or (x, y) in s:
+                        continue
 
-        row, col = len(mat), len(mat[0])
-        queue = deque()
-
-        for x in range(row):
-            for y in range(col):
+                    if mat[x][y] == 1:
+                        s.add((x, y))
+                        mat[x][y] = d
+                        q.append((x, y, d + 1))
+            return mat
+            
+        s, q = set(), deque()
+        for x in range(len(mat)):
+            for y in range(len(mat[0])):
                 if mat[x][y] == 0:
-                    # tuple with coordinates and dist
-                    queue.append((x, y, 1))
+                    q.append((x, y, 1))
 
-        return self.bfs(row, col, queue, mat)
-
-    def bfs(self, row, col, queue, matrix):
-
-        visited = set()
-        while queue:
-            x, y, dist = queue.popleft()
-            for ax, ay in [(x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1)]:
-                if 0 <= ax < row and 0 <= ay < col and (ax, ay) not in visited:
-                    if matrix[ax][ay] == 1:
-                        visited.add((ax, ay))
-                        matrix[ax][ay] = dist
-                        # add to queue and increase dist
-                        queue.append((ax, ay, dist + 1))
-
-        return matrix
+        return bfs(x, y, s, q)
 
