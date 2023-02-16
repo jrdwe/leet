@@ -1,32 +1,21 @@
 
 # runtime: O(n)
-# space:   O(1)
+# space:   O(n)
 
 class Solution:
     def insert(self, intervals: List[List[int]], newInterval: List[int]) -> List[List[int]]:
 
-        output = []
-
-        # iterate all items in interval
-        for i in range(len(intervals)):
-
-            # append newinterval first
-            if newInterval[1] < intervals[i][0]:
-                output.append(newInterval)
-                return output + intervals[i:]
-
-            # append interval first
-            elif newInterval[0] > intervals[i][1]:
-                output.append(intervals[i])
-
-            # handle merge overlap
+        i, l, o = 0, len(intervals), []
+        while i < l:
+            if newInterval[0] > intervals[i][1]:
+                o.append(intervals[i])
+            elif newInterval[1] < intervals[i][0]:
+                o.append(newInterval)
+                return o + intervals[i:]
             else:
-                newInterval[0] = min(newInterval[0], intervals[i][0])
-                newInterval[1] = max(newInterval[1], intervals[i][1])
+                newInterval = [min(intervals[i][0], newInterval[0]),
+                               max(intervals[i][1], newInterval[1])]
+            i += 1
 
-        # ensures newInterval is included
-        output.append(newInterval)
-
-        # return final output array
-        return output
-
+        o.append(newInterval)
+        return o
