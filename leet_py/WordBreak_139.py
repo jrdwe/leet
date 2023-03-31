@@ -5,12 +5,13 @@
 
 class Solution:
     def wordBreak(self, s: str, wordDict: List[str]) -> bool:
-        n, dp = len(s), [True] + [False] * (len(s) + 1)
-
-        for i in range(1, n + 1):
-            for j in range(i):
-                if dp[j] and s[j:i] in wordDict:
-                    dp[i] = True
+        
+        dp = [False] * len(s) + [True]
+        for i in range(len(s) - 1, -1, -1):
+            for w in wordDict:
+                if len(w) + i <= len(s) and s[i : len(w) + i] == w:
+                    dp[i] = dp[i + len(w)]
+                if dp[i]: 
                     break
-
-        return dp[n]
+                    
+        return dp[0]
