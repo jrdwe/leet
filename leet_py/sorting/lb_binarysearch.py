@@ -2,7 +2,7 @@
 
 # finds the index of the first value to satisfy a condition
 # [f, f, f, t, t, t, t]
-#        ^ finds here
+#           ^ finds here
 
 def lb_binarysearch(a: list, ok: callable):
     n = len(a)
